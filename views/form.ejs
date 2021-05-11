@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>app14-4</title>
+  </head>
+  <body>
+    <br />
+    <% if (!locals.data) { %>
+    <form method="POST" action="/form">
+      <span>Fruit :</span>
+      <!-- checkbox => เลือกได้หลายรายการ -->
+      <input type="checkbox" name="fruit" value="Apple" />Apple
+      <input type="checkbox" name="fruit" value="Grape" />Grape
+      <input type="checkbox" name="fruit" value="Orange" />Orange
+      <br />
+      <span>Flower :</span>
+      <!-- radio => เลือกได้รายการเดียว -->
+      <input type="radio" name="flower" value="Rose" />Rose
+      <input type="radio" name="flower" value="Daisy" />Daisy
+      <input type="radio" name="flower" value="Sakura" />Sakura
+      <br />
+      <span>Color :</span>
+      <!-- select => เลือกได้รายการเดียว -->
+      <select name="color">
+        <option value="Red">Red</option>
+        <option value="Pink">Pink</option>
+        <option value="Blue">Blue</option>
+      </select>
+      <br />
+      <span style="float: left">Animal :</span>
+      <!-- select multiple => เลือกได้หลายรายการ -->
+      <select name="animal" multiple>
+        <option value="Dog">Dog</option>
+        <option value="Cat">Cat</option>
+        <option value="Bird">Bird</option>
+        <option value="Rabbit">Rabbit</option>
+      </select>
+      <br />
+      <button>OK</button>
+    </form>
+    <br />
+    <% } else { %>
+    <div id="data">
+      Friut : <%= fruit %> <br />
+      Flower : <%= flower %> <br />
+      Color : <%= color %> <br />
+      Animal : <%= animal %> <br />
+      <a href="javascript: history.back()">Back</a>
+    </div>
+    <% } %>
+  </body>
+</html>

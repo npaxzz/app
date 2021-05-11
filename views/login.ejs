@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>APP15-2</title>
+    <script src="/axios/axios.min.js"></script>
+  </head>
+  <body>
+    <form method="POST">
+      <input type="text" name="login" id="login" placeholder="Login" /><br />
+      <input
+        type="password"
+        name="password"
+        placeholder="Password"
+      /><br /><br />
+      <button type="button" onclick="ajaxSubmit()">OK</button>
+      <div id="msg"></div>
+    </form>
+    <script>
+      function ajaxSubmit() {
+        let login = document.getElementById("login").value; //.value ข้อมูลที่ input เข้ามา
+        let params = new URLSearchParams();
+        params.append("login", login);
+        //เป็นการเพิ่ม key=“login” Value=login เข้าไปใน patams
+        axios({
+          url: "/login",
+          method: "post",
+          data: params,
+          timeout: 3000,
+        })
+          .then((result) => {
+            let msg = "";
+            if (result.data.exist == true) {
+              msg = "login  " + login + "  User already";
+            } else if (result.data.exist == false) {
+              msg = "login  " + login + "  No user yet.";
+            } else {
+              msg = "The information is not correct";
+            }
+            document.getElementById("msg").innerHTML = msg;
+          })
+          .catch((error) => alert(error));
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+  </head>
+  <body>
+    <form id="f1" name="f1" method="post">
+      <input type="text" name="login" id="login" placeholder="Login" />
+      <br /><br />
+      <input type="Password" name="pswd" id="pswd" placeholder="Password" />
+      <br /><br />
+      <input
+        type="Password"
+        name="pswd2"
+        id="pswd2"
+        placeholder="Confirm Password"
+      />
+      <br /><br />
+      <button type="button">OK</button>
+    </form>
+  </body>
+  <script>
+    let bt = document.querySelector("button");
+    bt.onclick = function (event) {
+      let Login = document.getElementById("login");
+      let pswd = document.getElementById("pswd");
+      let pswd2 = document.getElementById("pswd2");
+
+      if (Login.value == "" || pswd.value == "") {
+        alert("Please enter Login and Password");
+      } else if (pswd.value != pswd2.value) {
+        alert("Please enter the correct password");
+      } else {
+        alert("Login completed");
+      }
+    };
+  </script>
+</html>

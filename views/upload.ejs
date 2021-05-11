@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>APP 19-1</title>
+  </head>
+  <body>
+    <br /><br />
+    <form method="POST" action="/upload" enctype="multipart/form-data">
+      <input type="file" name="upfile" accept="image/*" /> <br /><br />
+      <input type="checkbox" name="overwrite" value="true" />Overwrite
+      <br /><br />
+      <button>OK</button>
+    </form>
+    <br /><br />
+    <% if (locals.file) { %>
+    <div id="result">
+      <hr />
+      <img src="<%= file %>" style="max-width: 200px" /> <br />
+      name : <% fileInfo.name %> <br />
+      type : <% fileInfo.type %> <br />
+      size : <% fileInfo.size %> bytes <br />
+    </div>
+    <% } %>
+  </body>
+</html>
