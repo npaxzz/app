@@ -15,6 +15,8 @@ function save() {
     if (!err) {
       console.log("doc1 saved");
       create();
+    } else {
+      console.log(err);
     }
   });
 }
@@ -31,6 +33,8 @@ function create() {
     if (!err) {
       console.log("doc2 saved");
       insertMany();
+    } else {
+      console.log(err);
     }
   });
 }
@@ -56,6 +60,8 @@ function insertMany() {
   Emp.insertMany(docs, (err) => {
     if (!err) {
       console.log("docs saved");
+    } else {
+      console.log(err);
     }
   });
 }
