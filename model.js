@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-moogoose
+mongoose
   .connect("mongdb://localhost:27017/db17", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
