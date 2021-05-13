@@ -1,8 +1,12 @@
 const mongoose = require("mongoose");
 mongoose
-  .connect("mongodb://root:1Mango2Banana@localhost:27017/db17", {
+  .connect("mongodb://localhost:27017/db17", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    auth: { authSource: "admin" },
+    user: "root",
+    pass: "1Mango2Banana",
+    useMongoClient: true,
   })
   .catch((err) => console.log(err));
 
