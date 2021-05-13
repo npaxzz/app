@@ -6,7 +6,6 @@ mongoose
     auth: { authSource: "admin" },
     user: "root",
     pass: "1Mango2Banana",
-    useMongoClient: true,
   })
   .catch((err) => console.log(err));
 
