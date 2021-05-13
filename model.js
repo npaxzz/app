@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 mongoose
-  .connect("mongodb://localhost:27017/db17", {
+  .connect("mongodb://root:1Mango2Banana@localhost:27017/db17", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
