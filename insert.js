@@ -1,4 +1,3 @@
-const { insertMany } = require("./model");
 const Emp = require("./model");
 
 save();
