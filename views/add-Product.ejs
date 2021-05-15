@@ -22,19 +22,19 @@
     <h4>Add Product</h4>
     <br /><br />
     <form method="POST" action="/add-Product">
-      <label>Name Product</label><br />
+      <label>Name Product</label>
       <input type="text" name="name" required /><br />
-      <label>Price</label><br />
+      <label>Price</label>
       <input type="number" name="price" min="0" required /><br />
-      <label>Stock</label><br />
+      <label>Stock</label>
       <input type="number" name="stock" min="0" required /><br />
       <% let dt = new Date(); let m = dt.getMonth() + 1; m = (m>10) ? m : "0"+m;
       let d = dt.getDate(); d = (d>10) ? d: "0"+d; let today =
       `${dt.getFullYear()}-${m}-${d}`; %>
-      <label>Date added</label><br />
+      <label>Date added</label>
       <input type="date" name="date_added" value="<%= today %>" required />
       <br />
-      <label>Description</label><br />
+      <label>Description</label>
       <textarea name="description" cols="30" rows="3"></textarea>
       <br /><br />
       <button>OK</button>
