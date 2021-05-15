@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>show-Product-all</title>
+</head>
+<body>
+    <br /><br />
+    <a href="/">Home</a><br /><br />
+    <h4>show-Product-all</h4>
+    <% if (locals.data) { %>
+    <table border="1">  
+    <!-- border => ขอบ -->
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Stock</th>
+        <th>Date added</th>
+        <th>Description</th>
+    </tr>
+    <%
+    for (d of data) {
+        let dt = new Date(Date.parse(d.date_added))
+        let df = `${dt.getDate()}-${dt.getMonth()+1}-${dt.getFullYear()}`
+    %>
+    <tr>
+        <td><%= d.name %></td>
+        <td><%= d.price %></td>
+        <td><%= d.stock %></td>
+        <td><%= df %></td>
+        <td><%= d.description %></td>
+    </tr>
+    <% } %>
+    </table>
+    <% } %>
+</body>
+</html>
