@@ -42,5 +42,11 @@ app.get("/show-Product-search", (req, res) => {
   });
 });
 
+app.get("/show-Product-edit", (req, res) => {
+  Product.find().exec((err, docs) => {
+    res.render("show-Product-edit", { data: docs });
+  });
+});
+
 app.listen(3000);
 console.log("Server started on port : 3000");
