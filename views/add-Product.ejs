@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>add-Product</title>
+    <style>
+      body {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="result">
+      <% if (locals.result && result == true) { %> information Saved <% } else
+      if (locals.result && result == false) { %>
+      <span style="color: red"> error </span>
+      <% } %>
+    </div>
+    <h4 style="margin-left: 160px">Add Product</h4>
+    <form method="POST" action="/add-Product">
+      <label>Name Product</label>
+      <input type="text" name="name" required /><br />
+      <label>Price</label>
+      <input type="number" name="price" min="0" required /><br />
+      <label>Stock</label>
+      <input type="number" name="stock" min="0" required /><br />
+      <% let dt = new Date() let m = dt.getMonth() + 1 m = (m>10) ? m : "0" + m
+      //ถ้าเป็นเลขหลักเดียว ให้เติม0ข้างหน้า let d = dt.getDate() d = (d>10) ?
+      d: "0" + d let today = `${dt.getFullyear()}-${m}-${d}` %>
+      <label>Date added</label>
+      <input type="date" name="date_added" value="<%= today %>" required />
+      <br />
+      <label style="float: left">Description</label>
+      <textarea name="description" cols="30" rows="3"></textarea>
+      <br /><br />
+      <button>OK</button>
+    </form>
+  </body>
+</html>
