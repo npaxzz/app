@@ -29,5 +29,11 @@ app.all("/add-Product", (req, res) => {
   }
 });
 
+app.get("/show-Product-all", (req.res) => {
+  Product.find().exec((err,docs) => {
+    res.render("show-Product-all",{data: docs})
+  })
+})
+
 app.listen(3000);
 console.log("Server started on port : 3000");
