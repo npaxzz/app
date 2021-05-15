@@ -27,8 +27,9 @@
       <label>Stock</label>
       <input type="number" name="stock" min="0" required /><br />
       <% let dt = new Date() let m = dt.getMonth() + 1 m = (m>10) ? m : "0" + m
-      //ถ้าเป็นเลขหลักเดียว ให้เติม0ข้างหน้า let d = dt.getDate() d = (d>10) ?
-      d: "0" + d let today = `${dt.getFullyear()}-${m}-${d}` %>
+      <!-- ถ้าเป็นเลขหลักเดียว ให้เติม0ข้างหน้า  -->
+      let d = dt.getDate() d = (d>10) ? d: "0" + d let today =
+      `${dt.getFullyear()}-${m}-${d}` %>
       <label>Date added</label>
       <input type="date" name="date_added" value="<%= today %>" required />
       <br />
