@@ -11,7 +11,7 @@
     <a href="/">Home</a><br /><br />
     <form method="GET" action="/show-Product-search">
     <% 
-        let kw = (locals.q) ? q ; "";
+        let kw = (locals.q) ? q : "";
     %>
     <input type="text" name="q" placeholder="Search Name" value="<%= kw %>"/>
     <button>OK</button>
