@@ -10,5 +10,24 @@ app.get("/", (req, res) => {
   res.render("MongoDB");
 });
 
+app.all("/add-Product", (req, res) => {
+  if (!req.body.name) {
+    res.render("add-Product");
+  } else {
+    let form = req.body;
+    let data = {
+      name: form.name || "",
+      price: form.price || 0,
+      stock: form.stock || 0,
+      date_added: new Date(Date.parse(form.date_added)) || new Date(),
+      description: form.description || "",
+    };
+    Product.create(data, (err) => {
+      let r = err ? false : true;
+      res.render("add-Product", { result: r });
+    });
+  }
+});
+
 app.listen(3001);
 console.log("Server started on port : 3001");
