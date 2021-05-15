@@ -18,7 +18,9 @@
       <span style="color: red"> error </span>
       <% } %>
     </div>
+    <br /><br />
     <h4 style="margin-left: 160px">Add Product</h4>
+    <br /><br />
     <form method="POST" action="/add-Product">
       <label>Name Product</label>
       <input type="text" name="name" required /><br />
@@ -32,10 +34,12 @@
       <label>Date added</label>
       <input type="date" name="date_added" value="<%= today %>" required />
       <br />
-      <label style="float: left">Description</label>
+      <label>Description</label>
       <textarea name="description" cols="30" rows="3"></textarea>
       <br /><br />
       <button>OK</button>
     </form>
+    <br /><br />
+    <a href="/">Home</a>
   </body>
 </html>
