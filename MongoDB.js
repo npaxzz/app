@@ -35,5 +35,12 @@ app.get("/show-Product-all", (req, res) => {
   });
 });
 
+app.get("/show-Product-search", (req, res) => {
+  let q = req.query.q || "";
+  Product.find({ name: { $regex: q, $options: "i" } }).exec((err, docs) => {
+    res.render("show-Product-search", { data: docs, q: q });
+  });
+});
+
 app.listen(3000);
 console.log("Server started on port : 3000");
