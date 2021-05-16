@@ -14,7 +14,7 @@
 <body>
     <h4>edit-product</h4>
     <% if (locals.data) { %>
-        <form method="POST" action="/edit-product/<%= d._id %>">
+        <form method="POST" action="/edit-product/<%= data._id %>">
             <label>Name Product</label>
             <input type="text" name="name" value="<%= data.name %>" required /><br />
             <label>Price</label>
