@@ -48,5 +48,32 @@ app.get("/show-Product-edit", (req, res) => {
   });
 });
 
+app.all("/edit-product/:id", (req, res) => {
+  if (req.method == "GET") {
+    if (req.params.id) {
+      let id = req.params.id;
+      Product.findById(req.params.id).exec((err, doc) => {
+        res.render("edit-product", { data: doc });
+      });
+    } else {
+      res.render("show-Product-edit");
+    }
+  } else if (req.method == "POST") {
+    let form = req.body;
+    let data = {
+      name: form.name || "",
+      price: form.price || 0,
+      stock: form.stock || 0,
+      date_added: new Date(Date.parse(form.date_added)) || new Date(),
+      description: form.description || "",
+    };
+    Product.findByIdAndUpdate(req.params.id, data, {
+      useFindAndModify: false,
+    }).exec((err) => {
+      res.redirect("/show-Product-edit");
+    });
+  }
+});
+
 app.listen(3000);
 console.log("Server started on port : 3000");
