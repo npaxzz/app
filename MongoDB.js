@@ -75,5 +75,15 @@ app.all("/edit-product/:id", (req, res) => {
   }
 });
 
+app.get("/delete-product/:id", (req, res) => {
+  if (req.params.id) {
+    Product.findByIdAndDelete(req.params.id, {
+      useFindAndModify: false,
+    }).exec((err) => {
+      res.redirect("/show-Product-edit");
+    });
+  }
+});
+
 app.listen(3000);
 console.log("Server started on port : 3000");
