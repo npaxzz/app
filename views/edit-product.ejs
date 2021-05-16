@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>edit-product</title>
+    <style>
+        body {
+          text-align: center;
+        }
+      </style>
+</head>
+<body>
+    <h4>edit-product</h4>
+    <% if (locals.data) { %>
+        <form method="POST" action="/edit-product/<%= d._id %>">
+            <label>Name Product</label>
+            <input type="text" name="name" value="<%= data.name %>" required /><br />
+            <label>Price</label>
+            <input type="number" name="price" min="0" value="<%= data.price %>" required /><br />
+            <label>Stock</label>
+            <input type="number" name="stock" min="0" value="<%= data.stock %>" required /><br />
+            <% 
+            let dt = new Date(Date.parse(data.date_added); 
+            let m = dt.getMonth() + 1; 
+            m = (m>10) ? m : "0"+m;
+            let d = dt.getDate(); 
+            d = (d>10) ? d: "0"+d; 
+            let da = `${dt.getFullYear()}-${m}-${d}`; 
+            %>
+            <label>Date added</label>
+            <input type="date" name="date_added" value="<%= da %>" required />
+            <br />
+            <label>Description</label>
+            <textarea name="description" cols="30" rows="3" value="<%= data.description %>" ></textarea>
+            <br /><br />
+            <button>OK</button>
+        </form>
+        <% } %>
+</body>
+</html>
