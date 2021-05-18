@@ -101,7 +101,7 @@ app.get("/show-Product-paging-pn",(req,res) => {
     if (result.hasPrevPage) {
       links.push(`<a href = "${req.path}?page=${result.prevPage}">Previous page</a>`)
     }
-    if (result.hasnextPage) {
+    if (result.hasNextPage) {
       links.push(`<a href = "${req.path}?page=${result.nextPage}">Next page</a>`)
     }
     if (result.page < result.totalPages) {
