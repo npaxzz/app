@@ -99,13 +99,13 @@ app.get("/show-Product-paging-pn",(req,res) => {
       links.push(`<a href = "${req.path}?page=1>Home</a>"`)
     }
     if (result.hasPrevPage) {
-      links.push(`<a href = "${req.path}?page=${result.prevPage}>Previous page</a>"`)
+      links.push(`<a href = "${req.path}?page=${result.prevPage}">Previous page</a>`)
     }
     if (result.hasnextPage) {
-      links.push(`<a href = "${req.path}?page=${result.nextPage}>Next page</a>"`)
+      links.push(`<a href = "${req.path}?page=${result.nextPage}">Next page</a>`)
     }
     if (result.page < result.totalPages) {
-      links.push(`<a href = "${req.path}?page=${result.totalPages}>Total page</a>"`)
+      links.push(`<a href = "${req.path}?page=${result.totalPages}">Total page</a>`)
     }
     let pagelink = links.join(" - ")
     
