@@ -115,5 +115,26 @@ app.get("/show-Product-paging-pn",(req,res) => {
   })
 })
 
+app.get("/show-Product-paging-no" , (req,res) => {
+  let options = {
+    page: req.query.page || 1,
+    limit: 2
+  }
+  Product.paginate({}, options, (err,result) => {
+    let links = []
+    for (i=1; i <= result.totalPages; i++) {
+      if (i == result.page) {
+        links.push(i)
+      } else {
+        links,push(`<a href="${req.path}?page=${i}">${i}</a>`)
+      }
+    }
+    let pagelink = links.join(" - ")
+    res.render("show-Product-paging-no",{
+      data: result.docs , pagelink: pagelink
+    })
+  })
+})
+
 app.listen(3000);
 console.log("Server started on port : 3000");
