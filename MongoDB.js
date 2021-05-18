@@ -109,9 +109,9 @@ app.get("/show-Product-paging-pn",(req,res) => {
     }
     let pagelink = links.join(" - ")
     
-res.render("show-Product-paging-pn", {
-  data: result.docs , page: result.page , pagelink: pagelink
-})
+    res.render("show-Product-paging-pn", {
+    data: result.docs , page: result.page , pagelink: pagelink
+    })
   })
 })
 
