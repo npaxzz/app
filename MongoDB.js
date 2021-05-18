@@ -122,7 +122,7 @@ app.get("/show-Product-paging-no" , (req,res) => {
   }
   Product.paginate({}, options, (err,result) => {
     let links = []
-    for (i=1; i < result.totalPages; i++) {
+    for (i=1; i <= result.totalPages; i++) {
       if (i == result.page) {
         links.push(i)
       } else {
