@@ -27,10 +27,6 @@
             let df = `${dt.getDate()}-${dt.getMonth()+1}-${dt.getFullYear()}`
         %>
         <tr>
-            <td>
-                <a href="/edit-product/<%= d._id %>">edit</a> | 
-                <a href="javascript:delProduct('<%= d._id %>')">delete</a>
-            </td>
             <td><%= d.name %></td>
             <td><%= d.price %></td>
             <td><%= d.stock %></td>
