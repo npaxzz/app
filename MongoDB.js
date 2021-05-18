@@ -1,6 +1,7 @@
 const Product = require("./model18");
 const express = require("express");
 const ejs = require("ejs");
+const { Model } = require("mongoose");
 const app = express();
 
 app.set("view engine", "ejs");
@@ -84,6 +85,35 @@ app.get("/delete-product/:id", (req, res) => {
     });
   }
 });
+
+app.get("/show-Product-paging-pn",(req,res) => {
+  let options = {
+    page: req.query.page || 1,
+    limit: 2
+  }
+  Product.paginate({}, options,(err,result) => {
+    // Model.paginate ( {conditions} , {options} , (err,result) => {} )
+    let links = []
+    if (result.page > 1 ) {
+      // ถ้าไม่ได้อยู่หน้าแรก ให้มีลิ้งค์เลื่อนไปหน้าแรก
+      links.push(`<a href = "${req.path}?page=1>Home</a>"`)
+    }
+    if (result.hasPrevPage) {
+      links.push(`<a href = "${req.path}?page=${result.prevPage}>Previous page</a>"`)
+    }
+    if (result.hasnextPage) {
+      links.push(`<a href = "${req.path}?page=${result.nextPage}>Next page</a>"`)
+    }
+    if (result.page < result.totalPages) {
+      links.push(`<a href = "${req.path}?page=${result.totalPages}>Total page</a>"`)
+    }
+    let pagelink = links.join(" - ")
+    
+res.render("show-Product-paging-pn", {
+  data: result.docs , page: result.page , pagelink: pagelink
+})
+  })
+})
 
 app.listen(3000);
 console.log("Server started on port : 3000");
