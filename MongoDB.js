@@ -126,7 +126,7 @@ app.get("/show-Product-paging-no" , (req,res) => {
       if (i == result.page) {
         links.push(i)
       } else {
-        links,push(`<a href="${req.path}?page=${i}">${i}</a>`)
+        links.push(`<a href="${req.path}?page=${i}">${i}</a>`)
       }
     }
     let pagelink = links.join(" - ")
