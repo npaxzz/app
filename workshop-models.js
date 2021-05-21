@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const paginate = require("mongoose-paginate-v2")
+const paginate = require("mongoose-paginate-v2");
 
 mongoose
   .connect("mongodb://localhost:27017/db17", {
@@ -12,20 +12,21 @@ mongoose
   .catch((err) => console.log(err));
 
 const questionSchema = new mongoose.Schema({
-    question: { type: String, require:true },
-    datail: { type: String },
-    questioner: { type: String, require:true },
-    data_posted: { type: Date, default: new Date() },
-    num_answers: { type: Number },
-    image_file: { type: String }
-})
+  question: { type: String, require: true },
+  datail: { type: String },
+  questioner: { type: String, require: true },
+  data_posted: { type: Date, default: new Date() },
+  num_answers: { type: Number },
+  image_file: { type: String },
+});
 
-const answersSchema = new mongoose.Schema({ 
-    question_id:{ type: mongoose.Types.ObjectId },
-    answer: { type: String },
-    answerer: { type: String },
-    data_posted: { type: Date, default: new Date() }
-})
+const answersSchema = new mongoose.Schema({
+  question_id: { type: mongoose.Types.ObjectId },
+  answer: { type: String },
+  answerer: { type: String },
+  data_posted: { type: Date, default: new Date() },
+});
 
 productSchema.plugin(paginate);
-module.exports = mongoose.model("Emp", employeeSchema);
+module.exports.Question = mongoose.model("Question", questionSchema);
+module.exports.Answer = mongoose.model("Answer", answersSchema);
