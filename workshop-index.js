@@ -1,4 +1,4 @@
-const models = require("./models");
+const models = require("./workshop-models");
 const Question = models.Question;
 const Answer = models.Answer;
 const express = require("express");
