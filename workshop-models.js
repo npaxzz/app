@@ -27,6 +27,6 @@ const answersSchema = new mongoose.Schema({
   data_posted: { type: Date, default: new Date() },
 });
 
-productSchema.plugin(paginate);
+mongoose.plugin(paginate);
 module.exports.Question = mongoose.model("Question", questionSchema);
 module.exports.Answer = mongoose.model("Answer", answersSchema);
