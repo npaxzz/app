@@ -28,5 +28,13 @@ app.get("/", (req, res) => {
   res.render("workshop");
 });
 
+app.get("/captcha", (req, res) => {
+  let captcha = svgCaptcha.create({ size: 5, noise: 3, background: "#fff" });
+  req.session.captcha = captcha.text;
+  res.type("svg");
+  res.status(200);
+  res.send(captcha.data);
+});
+
 app.listen(3000);
 console.log("Server started on port : 3000");
