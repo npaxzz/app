@@ -25,7 +25,6 @@ app.use(
 );
 
 app.get("/", (req, res) => {
-  res.type("text/css");
   res.render("workshop");
 });
 
