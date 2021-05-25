@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("layouts/head")  %>
+    <style>
+        form {
+            display: inline-block; width: 450px; background-color: #cde;
+        }
+        input[type="text"], textarea {
+            margin-bottom: 10px; margin-top: 5px;
+        }
+        #img_captcha { cursor: pointer;}
+        div.alert { width: 450px;}
+    </style>
+</head>
+<body>
+    <%- include("layouts/nav")  %>
+    <div id="container" class="my-5 pt-4 mx-auto text-center">
+        <% if (locals.msg) { %>
+            <div class="alert alert-warning alert-dismissible fade show mx-auto">
+                <%= mgs %>
+            <span class="close" data-dismiss="alert" aria-hidden="true">&times;</span>
+            </div>
+        <% } %>
+        <% let data = locals.data || {} %>
+        <h5 class="mb-3">New question</h5>
+        <form method="POST" action="/webboard/new-question"
+            enctype="multipart/form-data" class="text-left p-3">
+            <label>question</label><br/>
+            <input type="text" name="question" maxlength="150"
+            value="<%= data.question || '' %>" required
+            class="w-100 form form-input"><br/>
+            <label>Detail</label><br/>
+            <textarea name="detail" rows="3" class="w-100" required>
+            <%= data.Detail || '' %></textarea>
+            
+        </form>
+    </div>
+</body>
+</html>
