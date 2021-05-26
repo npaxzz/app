@@ -36,5 +36,25 @@ app.get("/captcha", (req, res) => {
   res.send(captcha.data);
 });
 
+app.all("/webboard/new-question", (req, res) => {
+  if (req.method == "GET") {
+    res.render("workshop-newquestion");
+    return;
+  }
+  // ใช้ formidable เพราะมีการอัปโหลดไฟล์
+  let form = new formidable.IncomingForm();
+  form.parse(req, (err, fields, files) => {
+    if (fields.captcha != req.session.captcha) {
+      res.render("workshop-newquestion", {
+        msg: "You entered a character that does not match the picture",
+        data: fields,
+      });
+      return;
+    }
+    // ถ้ามีไฟล์ภาพอัปโหลดขึ้นมา ต้องดำเนินกับภาพนั้นก่อน
+    let upfile = files.upfile;
+  });
+});
+
 app.listen(3000);
 console.log("Server started on port : 3000");
