@@ -4,7 +4,9 @@ const Answer = models.Answer;
 const express = require("express");
 const ejs = require("ejs");
 const formidable = require("formidable");
+// formidable แยกวิเคราะห์ข้อมูลฟอร์ม
 const sharp = require("sharp");
+// sharp ปรับขนาดไฟล์ภาพ
 const svgCaptcha = require("svg-captcha");
 const session = require("express-session");
 const app = express();
