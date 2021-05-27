@@ -53,6 +53,31 @@ app.all("/webboard/new-question", (req, res) => {
     }
     // ถ้ามีไฟล์ภาพอัปโหลดขึ้นมา ต้องดำเนินกับภาพนั้นก่อน
     let upfile = files.upfile;
+    let imgfile = upfile.name;
+    if (imgfile != "") {
+      const dir = "public/webboard-images/";
+      let oldname = imgfile.split(".");
+      oldname[0] = new Date().getTime();
+      imgfile = oldname.join(".");
+      let imgpath = dir + imgfile;
+
+      // เปลี่ยนขนาดความกว้างของภาพ
+      sharp(upfile.path)
+        .resize({ width: 600, withoutEnlargement: true })
+        // หากขนาดภาพเล็กกว่าอยู่แล้ว withoutEnlargement กำหนด เป็น true => ไม่ต้องเปลี่ยนขนาด
+        .toFile(imgpath, (err) => {});
+    }
+    let data = {
+      question: fields.question,
+      detail: fields.detail,
+      questioner: fields.questioner,
+      data_posted: new Date(),
+      num_answers: 0,
+      img_file: imgfile,
+    };
+    Question.create(data, (err, doc) => {
+      res.redirect("/webboard/show-all-questions");
+    });
   });
 });
 
