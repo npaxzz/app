@@ -119,5 +119,48 @@ app.get("/webboard/show-all-questions", (req, res) => {
   });
 });
 
+app.get("/webboard/question-detail-and-answers/:id", (req, res) => {
+  Question.findById(req.params.id).exec((err, docs_question) => {
+    // สร้าง query เพื่อไปกำหนดให้ paginate()
+    let q = Answer.find()
+      .where("question_id")
+      .equals(req.params.id)
+      .sort("-date_posted");
+
+    let options = {
+      page: req.query.page || 1,
+      limit: 3,
+    };
+    Answer.paginate(q, options, (err, result) => {
+      let links = [];
+      if (result.page > 1) {
+        // ถ้าไม่ได้อยู่หน้าแรก ให้มีลิ้งค์เลื่อนไปหน้าแรก
+        links.push(`<a href = "${req.path}?page=1>Home</a>"`);
+      }
+      if (result.hasPrevPage) {
+        links.push(
+          `<a href = "${req.path}?page=${result.prevPage}">Previous page</a>`
+        );
+      }
+      if (result.hasNextPage) {
+        links.push(
+          `<a href = "${req.path}?page=${result.nextPage}">Next page</a>`
+        );
+      }
+      if (result.page < result.totalPages) {
+        links.push(
+          `<a href = "${req.path}?page=${result.totalPages}">Total page</a>`
+        );
+      }
+      let pagelink = links.join(" - ");
+      res.render("workshop-ques-det-ans", {
+        data_question: docs_question,
+        data_answers: result.docs,
+        pagelink: pagelink,
+      });
+    });
+  });
+});
+
 app.listen(3000);
 console.log("Server started on port : 3000");
