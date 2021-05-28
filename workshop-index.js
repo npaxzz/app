@@ -112,7 +112,10 @@ app.get("/webboard/show-all-questions", (req, res) => {
       );
     }
     let pagelink = links.join(" - ");
-    res.render("show-all-questions", { data: result.docs, pagelink: pagelink });
+    res.render("workshop-showallquestions", {
+      data: result.docs,
+      pagelink: pagelink,
+    });
   });
 });
 
