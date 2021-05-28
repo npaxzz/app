@@ -24,7 +24,7 @@
                     <%  const m = ["January", "February","March", "April","May", "June","July", "August","September", "October","November", "December"]
                     for (d of data) {
                         let dt = new Date(Date.parse(d.date_posted))
-                        let df = `&{dt.getDate()} ${m[dt.getMonth()]} ${dt.getFullYear()}`
+                        let df = `${dt.getDate()} ${m[dt.getMonth()]} ${dt.getFullYear()}`
                     %>
                     <tr>
                         <td><%= df %></td>
