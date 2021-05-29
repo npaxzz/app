@@ -73,7 +73,7 @@ app.all("/webboard/new-question", (req, res) => {
       question: fields.question,
       detail: fields.detail,
       questioner: fields.questioner,
-      data_posted: new Date(),
+      date_posted: new Date(),
       num_answers: 0,
       image_file: imgfile,
     };

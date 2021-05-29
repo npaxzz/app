@@ -15,7 +15,7 @@ const questionSchema = new mongoose.Schema({
   question: { type: String, require: true },
   detail: { type: String },
   questioner: { type: String, require: true },
-  data_posted: { type: Date, default: new Date() },
+  date_posted: { type: Date, default: new Date() },
   num_answers: { type: Number },
   image_file: { type: String },
 });
