@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const paginate = require("mongoose-paginate-v2");
 
 mongoose
-  .connect("mongodb://localhost:27017/db17", {
+  .connect("mongodb://localhost:27017/workshop", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     auth: { authSource: "admin" },
