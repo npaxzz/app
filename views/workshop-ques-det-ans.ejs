@@ -17,7 +17,7 @@
     <%
     function dateFormat(date) {
         const m = ["January", "February","March", "April","May", "June","July", "August","September", "October","November", "December"]
-        let dt = new Date(Date.parse(d.date_posted))
+        let dt = new Date(Date.parse(date))
         return `${dt.getDate()} ${m[dt.getMonth()]} ${dt.getFullYear()}`
     }
     %>
