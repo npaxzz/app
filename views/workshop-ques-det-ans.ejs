@@ -25,7 +25,7 @@
         <div id="question-container" class="p-3">
             <h6 id="question"><%= data_question.question %></h6>
             <div id="question_detail" class="my-3">
-                <%= data_question.detail %>
+                <p><%= data_question.detail %></p>
             </div>
             <% if (data_question.image_file != "") { %>
                 <img id="question_image" src="/webboard-images/<%= data_question.image_file %>">
