@@ -13,7 +13,7 @@ mongoose
 
 const questionSchema = new mongoose.Schema({
   question: { type: String, require: true },
-  datail: { type: String },
+  detail: { type: String },
   questioner: { type: String, require: true },
   data_posted: { type: Date, default: new Date() },
   num_answers: { type: Number },
