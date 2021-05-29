@@ -162,5 +162,24 @@ app.get("/webboard/question-detail-and-answers/:id", (req, res) => {
   });
 });
 
+app.post("/webboard/post-answer", (req, res) => {
+  let form = req.body;
+  let data = {
+    question_id: form.question_id,
+    answer: form.answer,
+    answerer: form.answerer,
+    date_posted: new Date(),
+  };
+  Answer.create(data, (err) => {
+    Question.findByIdAndUpdate(
+      form.question_id,
+      { $inc: { num_answers: 1 } },
+      { useFindAndModify: false }
+    ).exec((err) => {
+      res.redirect("/webboard/question-detail-and-answers/" + form.question_id);
+    });
+  });
+});
+
 app.listen(3000);
 console.log("Server started on port : 3000");
