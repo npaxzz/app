@@ -57,6 +57,32 @@
         </div>
         <div class="text-center mt-3 my-5"><%- pagelink %></div>
     </div>
+    <!-- Bootstrap modal -->
+    <div id="modalAnswer" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Answer</h5>
+                    <button class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body mb-3">
+                    <form method="POST" action="/webboard/post-answer">
+                    <input type="hidden" name="question_id" value="<%= data_question._id %>">
+                    <!-- input type="hidden"ฟิลด์ที่ซ่อนจะไม่แสดงให้ผู้ใช้เห็น แต่ข้อมูลจะถูกส่งเมื่อส่งแบบฟอร์ม -->
+                    <label for="answer">Answer: </label><br/>
+                    <textarea id="answer" name="answer" rows="4" class="w-100" required></textarea><br/>
+                    <label for="answerer">Name: </label><br/>
+                    <!-- for แอตทริบิวต์ที่ระบุซึ่งองค์ประกอบรูปแบบฉลากที่ถูกผูกไว้ -->
+                    <input type="text" id="answerer" name="answerer" required>
+                    <button class="btn btn-sm btn-primary float-right mr-3"
+                    onclick="document.querySelector('form').submit()">OK</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <%- include("layouts/footer")  %>
 </body>
 </html>
