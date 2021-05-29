@@ -75,7 +75,7 @@ app.all("/webboard/new-question", (req, res) => {
       questioner: fields.questioner,
       data_posted: new Date(),
       num_answers: 0,
-      img_file: imgfile,
+      image_file: imgfile,
     };
     Question.create(data, (err, doc) => {
       res.redirect("/webboard/show-all-questions");
