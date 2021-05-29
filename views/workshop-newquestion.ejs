@@ -20,6 +20,7 @@
             <div class="alert alert-warning alert-dismissible fade show mx-auto">
                 <%= msg %>
             <span class="close" data-dismiss="alert" aria-hidden="true">&times;</span>
+            <!-- &times; => X -->
             </div>
         <% } %>
         <% let data = locals.data || {} %>
@@ -31,8 +32,8 @@
             value="<%= data.question || '' %>" required
             class="w-100 form form-input"><br/>
             <label>Detail</label><br/>
-            <textarea name="detail" rows="3" class="w-100" required>
-            <%= data.detail || '' %></textarea><br/>
+            <textarea name="detail" rows="3" class="w-100" value="<%= data.detail || '' %>" required>
+            </textarea><br/>
             <label>picture</label><br/>
             <input type="file" name="upfile" accept="image/*"><br/><br/>
             <div class="d-inline-block">
