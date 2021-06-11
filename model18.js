@@ -5,9 +5,6 @@ mongoose
   .connect("mongodb://localhost:27017/db18", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    auth: { authSource: "admin" },
-    user: "root",
-    pass: "1Mango2Banana",
   })
   .catch((err) => console.log(err));
 
